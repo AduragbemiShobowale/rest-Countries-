@@ -16,7 +16,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(() => {
     return JSON.parse(localStorage.getItem("dark-mode")) || false;
   });
-  
 
   useEffect(() => {
     const getData = async () => {
@@ -27,9 +26,7 @@ function App() {
       setIsLoading(false);
     };
 
-    setTimeout(() => {
-      getData();
-    }, 3000);
+    getData();
   }, []);
 
   const filterByRegion = (region) => {
@@ -45,13 +42,13 @@ function App() {
       country.name.common.toLowerCase().includes(search)
     );
     console.log(newNations);
-    setFilteredCountries(newNations)
+    setFilteredCountries(newNations);
   };
 
   return (
     <>
       <Router>
-        <NavBar darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
         <Routes>
           <Route
             path="/"
@@ -69,7 +66,10 @@ function App() {
               />
             }
           />
-          <Route path="/:countryName" element={<CountryDetails darkMode={darkMode}/>} />
+          <Route
+            path="/:countryName"
+            element={<CountryDetails darkMode={darkMode} />}
+          />
         </Routes>
       </Router>
     </>
